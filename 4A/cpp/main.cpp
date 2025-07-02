@@ -2,21 +2,20 @@
 #include <iostream>
 using namespace std;
 
-void readInput() {
-    // ios::sync_with_stdio(false);
-    // cin.tie(nullptr);
+void setupIO() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
 #endif // !ONLINE_JUDGE
 }
 
 int main() {
-    readInput();
+    setupIO();
 
     int weight;
     cin >> weight;
-
-    cout << "weight:" << weight << "\n";
 
     if (weight > 2 && weight % 2 == 0) {
         cout << "YES\n";
