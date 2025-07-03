@@ -43,6 +43,7 @@ bool all_same_to_last(const vector<int>& v, int idx) {
     }
     return true;
 }
+
 bool all_same_from_start(const vector<int>& v, int idx) {
     int target = v[idx];
     for (int i = 0; i < idx; i++) {
