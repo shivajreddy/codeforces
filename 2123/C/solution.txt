@@ -1,3 +1,9 @@
+wrong answer 667th lines differ - expected: '1111', found: '1101'
+1 4 3 2
+1 1 1 1
+1 1 0 1
+
+7 2 4 1
 - can you eliminate all nums except current
 - if num is either min or max, then possible
 - so, is it possible to make current number a min or max
@@ -17,3 +23,4 @@
 3 4 2 3 1
 1 1 2 3 1
 1 1 2 
+

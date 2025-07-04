@@ -1,9 +1,6 @@
 // https://codeforces.com/contest/2123/problem/C
 
-#include <algorithm>
-#include <iostream>
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 void setupIO() {
@@ -15,27 +12,29 @@ void setupIO() {
 #endif // !ONLINE_JUDGE
 }
 
-void solve(int n, vector<int>& v) {
-    int mn = *min_element(v.begin(), v.end());
-    int mx = *max_element(v.begin(), v.end());
-    // cout << mn << " " << mx << "\n";
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> v(n + 1), pre(n + 1, INT_MAX), suf(n + 2);
+
+    for (int i = 1; i < n + 1; i++) {
+        cin >> v[i];
+        pre[i] = min(pre[i - 1], v[i]);
+    }
+
+    for (int i = n; i > 0; i--)
+        suf[i] = max(v[i], suf[i + 1]);
+
+    for (int i = 1; i < n + 1; i++)
+        cout << (v[i] == pre[i] || v[i] == suf[i] ? 1 : 0);
+
+    cout << "\n";
 }
 
 int main() {
     int tc;
     cin >> tc;
 
-    while (tc--) {
-        int n;
-        cin >> n;
-
-        vector<int> v;
-        int num;
-        for (int i = 0; i < n; i++) {
-            cin >> num;
-            v.push_back(num);
-        }
-
-        solve(n, v);
-    }
+    while (tc--)
+        solve();
 }

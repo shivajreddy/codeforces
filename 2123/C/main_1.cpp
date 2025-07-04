@@ -23,14 +23,22 @@ int main() {
     int tc;
     cin >> tc;
 
-    while (tc--) {
+    for (int i = 0; i < tc; i++) {
+        // while (tc--) {
         int n;
         cin >> n;
         vector<int> v(n);
         for (int i = 0; i < n; i++)
             cin >> v[i];
 
-        solve(v);
+        if (i == 666) {
+            cout << "case num: 666: ";
+            for (int x : v)
+                cout << x;
+            cout << endl;
+        } else {
+            solve(v);
+        }
     }
 
     return 0;
@@ -62,10 +70,16 @@ void solve(const vector<int>& v) {
         // cout << "TESTING idx: " << idx << endl;
         // current num is either min or max
         if (idx == min_idx || idx == max_idx) res += '1';
-        // min & max are on either side
-        else if ((min_idx < idx && max_idx > idx) ||
-                 (min_idx > idx && max_idx < idx))
+        // min (curr) max
+        else if (min_idx < idx && idx < max_idx)
             res += '0';
+        // max (curr) min
+        else if (max_idx < idx && idx < min_idx) {
+            if (max_idx == 0 || min_idx == v.size() - 1)
+                res += '1';
+            else
+                res += '1';
+        }
         // current item has min&max on one side
         else {
             if (all_same_to_last(v, idx))
