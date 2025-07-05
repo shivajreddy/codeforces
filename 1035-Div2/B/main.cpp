@@ -1,4 +1,4 @@
-// https://codeforces.com/contest/2123/problem/C
+// https://codeforces.com/problemset/problem/
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -8,7 +8,7 @@ void setupIO() {
     cin.tie(nullptr);
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
-#endif // !ONLINE_JUDGE
+#endif
 }
 
 int main() {
