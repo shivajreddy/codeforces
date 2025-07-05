@@ -11,6 +11,14 @@ void setupIO() {
 #endif
 }
 
+void solve() {
+}
+
 int main() {
     setupIO();
+
+    int tc;
+    cin >> tc;
+    while (tc--)
+        solve();
 }

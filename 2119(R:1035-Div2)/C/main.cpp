@@ -1,6 +1,7 @@
-// https://codeforces.com/problemset/problem/
+// https://codeforces.com/contest/2119/problem/C
 
 #include <bits/stdc++.h>
+
 using namespace std;
 
 void setupIO() {
@@ -11,6 +12,16 @@ void setupIO() {
 #endif
 }
 
+void solve() {
+    int n, l, r, k;
+    cin >> n >> l >> r >> k;
+}
+
 int main() {
     setupIO();
+
+    int tc;
+    cin >> tc;
+    while (tc--)
+        solve();
 }

@@ -28,6 +28,7 @@ void solve() {
         if (x <= y) {
             cost = x * (b - a);
         } else {
+            /*
             while (a != b) {
                 if (a % 2 == 0) { // operation 2: a ^ 1
                     a ^= 1;
@@ -37,6 +38,22 @@ void solve() {
                     cost += x;
                 }
             }
+            // */
+
+            // /*
+            if (b - a % 2 == 0) {
+                int num_add = b - a / 2;
+                int num_xor = num_add;
+                // cost += num_add;
+                // cost += num_xor;
+            } else {
+                int num_add = b - a / 2;
+                int num_xor = b - a / 2;
+                (a % 2 == 0) ? num_xor++ : num_add++;
+                cost += num_add;
+                cost += num_xor;
+            }
+            // */
         }
     } else {
         cost = -1;

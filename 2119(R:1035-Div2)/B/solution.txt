@@ -15,3 +15,6 @@ p=[3,3] q=[3,3] stops=4,5,1
  - but this is exponentiall, because there are infinite points 
    on the circle's circumfarance.
 
+- when we have two circles, we can find the intersection points 
+  -but, we have multiple steps
+  a -> s1 -> s2 <-> sk <- b

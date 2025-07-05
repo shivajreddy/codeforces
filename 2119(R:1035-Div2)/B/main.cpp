@@ -21,13 +21,18 @@ double get_dist(double x1, double y1, double x2, double y2) {
 void solve() {
     int n;
     cin >> n;
+    // cout << "n: " << n << endl;
 
     int px, py, qx, qy;
     cin >> px >> py >> qx >> qy;
+    // cout << px << " " << py << " " << qx << " " << qy << " " << endl;
 
-    vector<int> v;
+    vector<int> v(n);
     for (int i = 0; i < n; i++)
         cin >> v[i];
+
+    // given two points
+    double d = sqrt((px - qx) ^ 2 + (py - qy) ^ 2);
 }
 
 int main() {

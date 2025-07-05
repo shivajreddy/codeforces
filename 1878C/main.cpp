@@ -5,36 +5,30 @@
 using namespace std;
 
 void setupIO() {
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 #ifndef ONLINE_JUDGE
-  freopen("input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
 #endif
 }
 
 void solve() {
-  int n, k, x;
-  cin >> n >> k >> x;
+    long long n, k, x;
+    cin >> n >> k >> x;
 
-  int min_sum = (k * (k + 1)) / 2;
-  // int max_sum = (k * (2 * n - k + 1)) / 2;
-  int max_sum = (n * (n + 1)) / 2;
-  // int max_sum = ((n - k + 1) * (k + n)) / 2;
-  if (x < min_sum || x > max_sum) {
-    cout << "NO\n";
-    return;
-  }
-  if (x == min_sum || x == max_sum) {
-    cout << "YES\n";
-    return;
-  }
-  cout << "YES\n";
+    long long min_sum = (k * (k + 1)) / 2;
+    long long max_sum = (k * (2 * n - k + 1)) / 2;
+    if (min_sum <= x and x <= max_sum) {
+        cout << "YES\n";
+    } else {
+        cout << "NO\n";
+    }
 }
 
 int main() {
-  setupIO();
-  int tc;
-  cin >> tc;
-  while (tc--)
-    solve();
+    setupIO();
+    long long tc;
+    cin >> tc;
+    while (tc--)
+        solve();
 }
