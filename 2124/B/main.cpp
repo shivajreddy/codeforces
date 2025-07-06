@@ -24,16 +24,14 @@ void solve() {
         return;
     }
 
-    // Can do 1 operation.
-
-    vector<int> minv(n);
+    vector<int> minv(n); // [min(v[0..i]), ... ]
     minv[0] = v[0];
     for (int i = 1; i < n; i++) {
         int smallest_so_far = min(minv[i - 1], v[i]);
         minv[i] = smallest_so_far;
     }
 
-    vector<int> sumv(n);
+    vector<int> sumv(n); // [sum(minv[0..i]), ... ]
     sumv[0] = v[0];
     for (int i = 1; i < n; i++) {
         sumv[i] = sumv[i - 1] + minv[i];
@@ -89,8 +87,7 @@ void solve() {
         }
     }
 
-    // 1 segment
-    cout << "2\n";
+    // 1 segment ?
     */
 }
 
