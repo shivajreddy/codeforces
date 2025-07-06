@@ -24,7 +24,7 @@ void solve() {
     cout << time << "\n";
     // */
 
-    /* my way
+    /* Bruteforce
     long long a, b, n;
     cin >> a >> b >> n;
 
