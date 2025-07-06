@@ -39,6 +39,29 @@ void solve() {
         sumv[i] = sumv[i - 1] + minv[i];
     }
 
+    for (int i = 1; i < n; i++) {
+        int new_prev_num = v[i - 1] + v[i]; // assume adding current to previous
+        int new_prev_min;
+        if (i == 1) {
+            new_prev_min = new_prev_num;
+        } else {
+            new_prev_min = min(minv[i - 2], new_prev_num);
+        }
+        int new_prev_sum;
+        if (i == 1) {
+            new_prev_sum = new_prev_num;
+        } else {
+            new_prev_sum = sumv[i - 2] + new_prev_min;
+        }
+
+        if (new_prev_sum <= sumv[i]) {
+            cout << new_prev_sum << "\n";
+            return;
+        }
+    }
+    cout << sumv[n - 1] << "\n";
+
+    /*
     // Check segments
     int segs = 0;
     int prev = -1;
@@ -68,6 +91,7 @@ void solve() {
 
     // 1 segment
     cout << "2\n";
+    */
 }
 
 int main() {

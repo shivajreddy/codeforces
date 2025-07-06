@@ -8,3 +8,10 @@
 if there is a 0 in the input, we search
 before that position, because after that, it will
 all be zeroes
+
+    0 1 2 3 
+    --------------
+    1 2 2 3  arr
+  X 1 1 1 1  minarr
+    1 2 3 4  minsumarr
+
