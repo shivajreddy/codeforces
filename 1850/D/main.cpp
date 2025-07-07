@@ -1,5 +1,5 @@
+// 1850 D.Balanced Round
 // https://codeforces.com/problemset/problem/1850/D
-// D. Balanced Round
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -43,7 +43,12 @@ void solve() {
         }
     }
 
-    int res = n - longest_seq - 1;
+    // say we have sequnce of 2, then there are 3 numbers. because each diffence
+    // in the sequnce is the difference between 2 numbers. so if len(ad) is 2,
+    // then there are 3 numbers in the array
+    int total_valid_numbers = longest_seq + 1;
+
+    int res = n - total_valid_numbers;
     cout << res << "\n";
 }
 
