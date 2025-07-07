@@ -39,8 +39,8 @@ void solve() {
         max_distance += d;
         longest_d = max(longest_d, d);
     }
-    cout << "MAX DIST: " << max_distance << endl;
-    cout << "TARGET DIST: " << target_distance << endl;
+    // cout << "MAX DIST: " << max_distance << endl;
+    // cout << "TARGET DIST: " << target_distance << endl;
 
     // Check if we can reach
     if (max_distance < target_distance) {
