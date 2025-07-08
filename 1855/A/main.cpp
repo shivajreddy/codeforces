@@ -15,23 +15,30 @@ void solve() {
     long long n;
     cin >> n;
 
-    // n is odd, then there is only 1 contiguous divisor
-    if (n < 3) {
+    // for n=1, only 1. for n=2, 1,2 divide 2
+    if (n <= 2) {
         cout << n << "\n";
         return;
     }
 
-    // x is the smallest_num_that_doesnt_divide_n
-    int x = -1;
-    for (int num = 1; num <= n; num++) {
+    // n is odd, then there is only 1 contiguous divisor
+    // because the numbers in continuos order have both odd&even
+    // only an even number is divisible by both odd&even
+    if (n & 1) {
+        cout << "1\n";
+        return;
+    }
+
+    // x is the smallest num that doesn't divide n
+    int x = 1; // since 1 divides everything, start with 2
+    for (int num = 2; num <= n; num++) {
         if (n % num != 0) {
             x = num;
             break;
         }
     }
 
-    int res = x == -1 ? 2 : x - 1;
-    cout << res << endl;
+    cout << x - 1 << endl;
 
     /*
     long long max_divisor = sqrt(n);
