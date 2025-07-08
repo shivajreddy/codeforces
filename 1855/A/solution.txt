@@ -1,17 +1,17 @@
 
 
 n = 40
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 40
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ... 40
       ---
 
 q: find all divisors of n
-    if (40 % 2 == 0). divisors = [2]
-        40 / 2 = 20   divisors = [2, 20]
+    if (40 % 2 == 0)           divisors = [2]
+    its pair is: 40 / 2 = 20   divisors = [2, 20]
 
  [all divisors]
  [d1 d2 d3 d4 d5 d6]
 
- find the longest continuous sequence
+find the longest continuous sequence
 
 
 res = 1;

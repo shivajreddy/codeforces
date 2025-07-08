@@ -20,6 +20,25 @@ void solve() {
         return;
     }
 
+    long long max_divisor = sqrt(n);
+    // cout << "max_divisor: " << max_divisor << endl;
+
+    int max_len = 1, curr_len = 1;
+    int prev = 1;
+    for (int i = 2; i < max_divisor; i++) {
+        if (n % i == 0) {
+            if (i == prev + 1) {
+                curr_len++;
+            } else {
+                curr_len = 1;
+            }
+            prev = i; // update prev
+        }
+        max_len = max(max_len, curr_len);
+    }
+    cout << max_len << "\n";
+
+    /*
     // Find all the divisors
     unordered_set<long long> all_divisors;
 
@@ -44,8 +63,8 @@ void solve() {
             }
         }
     }
-
     cout << res << "\n";
+    */
 }
 
 int main() {
