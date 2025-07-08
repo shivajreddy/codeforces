@@ -1,3 +1,4 @@
+// B. Longest Divisors Interval
 // https://codeforces.com/problemset/problem/1855/B
 
 #include <bits/stdc++.h>
