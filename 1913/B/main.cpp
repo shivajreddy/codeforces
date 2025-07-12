@@ -21,10 +21,6 @@ void solve() {
     for (char c : s)
         hm[c] += 1;
 
-    // for (auto [k, v] : hm) {
-    //     cout << k << " : " << v << endl;
-    // }
-
     int last_idx = -1;
     for (int i = 0; i < s.size(); i++) {
         char needed_char = s[i] == '0' ? '1' : '0';
@@ -35,7 +31,6 @@ void solve() {
         hm[needed_char] -= 1;
     }
 
-    // cout << "last_idx: " << last_idx << endl;
     if (last_idx == -1) {
         cout << "0\n";
     } else {
