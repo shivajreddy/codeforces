@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-=======
-1
-5
-aaaaa
-14
-bcdaaaabcdaaaa
->>>>>>> refs/remotes/origin/main
 5
 5
 aaaaa

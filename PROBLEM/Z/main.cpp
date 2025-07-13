@@ -4,6 +4,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+typedef long long ll;
+
 void setupIO() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -12,8 +14,7 @@ void setupIO() {
 #endif
 }
 
-void solve() {
-}
+void solve();
 
 int main() {
     setupIO();
@@ -22,4 +23,7 @@ int main() {
     cin >> tc;
     while (tc--)
         solve();
+}
+
+void solve() {
 }
