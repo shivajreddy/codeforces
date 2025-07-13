@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
             12345
        2345            1345
@@ -15,3 +16,8 @@
 
 11 11,1,_
 12 12,1,2
+=======
+bcdaaaabcdaaaa  res: 50
+
+71
+>>>>>>> refs/remotes/origin/main
