@@ -4,6 +4,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// shorter type names
+typedef long long ll;
+typedef vector<int> vi;
+
+// Macros
+#define PB push_back
+#define loop(i, a, b) for (int i = a; i < b; i++)
+
 void setupIO() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -12,42 +20,7 @@ void setupIO() {
 #endif
 }
 
-void solve() {
-    int n;
-    cin >> n;
-
-    vector<int> original_v(n);
-    for (int i = 0; i < n; i++)
-        cin >> original_v[i];
-
-    // copy and sort the input, (n log n)
-    vector<int> v = original_v;
-    sort(v.begin(), v.end());
-
-    unordered_map<int, int> hm;
-
-    // for (int i = n - 1; i >= 0; i--) {
-    //     int num = v[i];
-    //     cout << num << " ";
-    // }
-    // cout << endl;
-
-    for (int i = 0; i < n; i++) {
-        int score = v[i];
-        int res = max(i - 1, 0);
-
-        {
-            cout << res;
-        }
-        hm[num] = res;
-    }
-
-    // output results
-    for (int num : original_v) {
-        cout << hm[num] << " ";
-    }
-    cout << "\n";
-}
+void solve();
 
 int main() {
     setupIO();
@@ -56,4 +29,36 @@ int main() {
     cin >> tc;
     while (tc--)
         solve();
+}
+
+void solve() {
+    int n;
+    cin >> n;
+
+    vector<ll> original_v(n);
+    loop(i, 0, n) cin >> original_v[i];
+
+    // copy and sort the input, (n log n)
+    vector<ll> v = original_v;
+    sort(v.begin(), v.end());
+
+    vector<ll> prefix = v;
+    loop(i, 1, n) prefix[i] = prefix[i] + prefix[i - 1];
+
+    unordered_map<int, int> hm;
+    hm[v[n - 1]] = n - 1; // last number can reach all
+
+    for (int i = n - 2; i >= 0; i--) {
+        if (prefix[i] >= v[i + 1]) {
+            hm[v[i]] = i + 1;
+        } else {
+            hm[v[i]] = i;
+        }
+    }
+
+    // output results
+    for (int num : original_v) {
+        cout << hm[num] << " ";
+    }
+    cout << "\n";
 }
