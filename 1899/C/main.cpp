@@ -32,4 +32,8 @@ int main() {
 }
 
 void solve() {
+    int n;
+    cin >> n;
+    vi v(n);
+    loop(i, 0, n) cin >> v[i];
 }
