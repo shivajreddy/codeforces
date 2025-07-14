@@ -1,5 +1,5 @@
-// PROBLEM_NAME
-// PROBLEM_LINK
+// C. Quests
+// https://codeforces.com/problemset/problem/1914/C
 
 #include <bits/stdc++.h>
 using namespace std;
