@@ -50,15 +50,14 @@ void solve() {
 
     for (int i = n - 2; i >= 0; i--) {
         if (prefix[i] >= v[i + 1]) {
-            hm[v[i]] = i + 1;
+            hm[v[i]] = hm[v[i + 1]];
         } else {
             hm[v[i]] = i;
         }
     }
 
     // output results
-    for (int num : original_v) {
+    for (int num : original_v)
         cout << hm[num] << " ";
-    }
     cout << "\n";
 }
