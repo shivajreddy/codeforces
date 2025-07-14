@@ -45,10 +45,13 @@ void solve() {
     vector<ll> prefix = v;
     loop(i, 1, n) prefix[i] = prefix[i] + prefix[i - 1];
 
+    // track count of scores that each number can collect
     unordered_map<int, int> hm;
     hm[v[n - 1]] = n - 1; // last number can reach all
 
     for (int i = n - 2; i >= 0; i--) {
+        // if current prefix is >= next number, then current number
+        // can reach the same count as the next number
         if (prefix[i] >= v[i + 1]) {
             hm[v[i]] = hm[v[i + 1]];
         } else {
