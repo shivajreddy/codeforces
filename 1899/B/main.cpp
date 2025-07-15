@@ -87,7 +87,7 @@ void solve() {
     loop(i, 0, n) cin >> v[i];
 
     int k = 1;
-    ll res = -1;
+    ll res = 0;
 
     loop(k, 1, n + 1) {
         if (n % k != 0) continue;

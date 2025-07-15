@@ -33,6 +33,8 @@
 10 50
 10 10 50 50
 20 20 20
+
+OBSERVATION:
 k-min=1 => n trucks
 k-max=n => 1 truck
 
