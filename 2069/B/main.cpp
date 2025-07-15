@@ -2,6 +2,7 @@
 // https://codeforces.com/problemset/problem/2069/B
 
 #include <bits/stdc++.h>
+#include <numeric>
 #include <unordered_map>
 #include <vector>
 using namespace std;
@@ -33,39 +34,31 @@ int main() {
         solve();
 }
 
-void solve2() {
+void solve() {
     int n, m;
     cin >> n >> m;
 
     vector<vector<int>> mat(n, vector<int>(m)); // 2d matarix
     loop(i, 0, n) loop(j, 0, m) cin >> mat[i][j];
 
-    // print half1
-    // for even row, all even col. for odd row, all odd col
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            if (i % 2 == 0 && j % 2 == 1) continue;
-            if (i % 2 == 1 && j % 2 == 0) continue;
-            cout << mat[i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << endl;
+    vector<int> has_color(n * m, 0);
+    vector<int> has_bad(n * m, 0);
 
-    // print half2
-    // for even row, all odd col. for odd row, all even col
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            if (i % 2 == 0 && j % 2 == 0) continue;
-            if (i % 2 == 1 && j % 2 == 1) continue;
-            cout << mat[i][j] << " ";
+    loop(i, 0, n) {
+        loop(j, 0, m) {
+            int num = mat[i][j];
+            has_color[num - 1] = 1;
+            if (i + 1 < n && num == mat[i + 1][j]) has_bad[num - 1] = 1;
+            if (j + 1 < m && num == mat[i][j + 1]) has_bad[num - 1] = 1;
         }
-        cout << endl;
     }
-    cout << endl;
+    int sum_has_color = accumulate(has_color.begin(), has_color.end(), 0);
+    int sum_has_bad = accumulate(has_bad.begin(), has_bad.end(), 0);
+    int max_has_bad = *max_element(has_bad.begin(), has_bad.end());
+    cout << sum_has_color + sum_has_bad - 1 - max_has_bad << endl;
 }
 
-void solve() {
+void solve2() {
     int n, m;
     cin >> n >> m;
 
