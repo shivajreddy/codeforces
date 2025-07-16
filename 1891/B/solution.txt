@@ -23,3 +23,16 @@ OBSERVATION:
 min_query = 2^1  = 2
 max_query = 2^30 = 1_073_741_824
 odd nums will never be changed
+- say we are checking if the number is being divisible by 2^3,
+  if we it does, then the new number (+2^2)
+
+         1 2  3 4 4
+        -1 1 -1 2 2 
+           2    4 4
+    q=2    y    y y
+    q=3    n    y y
+    q=4    n    y y
+ 
+-1 3 2 2 4 1 -1 
+1 1 1 1 1 
+-1 1 2 3 4 
