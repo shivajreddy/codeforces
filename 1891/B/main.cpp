@@ -33,12 +33,38 @@ int main() {
 void solve() {
     int n, m;
     cin >> n >> m;
+
     vi a(n);
     loop(i, 0, n) cin >> a[i];
 
     vi q(m);
     loop(i, 0, m) cin >> q[i];
 
+    vi vaild_powers; // max 30
+    int prev = 31;
+    loop(i, 0, m) { // 10^5
+        if (q[i] < prev) {
+            vaild_powers.push_back(q[i]);
+            prev = q[i];
+        }
+    }
+
+    // cout << "DIVISORS\n";
+    // for (int d : vaild_powers) cout << d << " ";
+    // cout << endl;
+
+    vi res = a;
+    for (int p : vaild_powers) { // 30
+        ll d = pow(2, p);        // d=[2..2^30]
+        ll add = pow(2, p - 1);
+        loop(i, 0, n) { // 10^5, ai=[1..10^9]
+            if (res[i] % d == 0) res[i] += add;
+        }
+    }
+    loop(i, 0, n) cout << res[i] << " ";
+    cout << '\n';
+
+    /*
     vi max_divisors(n);
     // go over a and check for all [1..30] the highest divisor
     loop(i, 0, n) { // 10^5
@@ -67,6 +93,8 @@ void solve() {
         }
     }
 
+    for (auto [k, v] : q_map) cout << k << " : " << v << endl;
+
     vi final_adds(n, 0); // holds the final numbers that will be added
     loop(i, 0, n) {
         if (max_divisors[i] == -1) continue;
@@ -77,18 +105,7 @@ void solve() {
     loop(i, 0, n) { // 10^5
         res[i] = a[i] + final_adds[i];
     }
-
-    /*
-    loop(i, 0, m) {          // 10^5, xi=[1..30]
-        ll d = pow(2, q[i]); // d=[2..2^30]
-        ll add = pow(2, q[i] - 1);
-        loop(j, 0, n) { // 10^5, ai=[1..10^9]
-            if (res[j] % 2 == 1) continue;
-            if (res[j] % d == 0) res[j] += add;
-        }
-    }
-    */
-
     loop(i, 0, n) cout << res[i] << " ";
     cout << '\n';
+    */
 }
