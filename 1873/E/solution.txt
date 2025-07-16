@@ -1,0 +1,29 @@
+
+n : 10^5
+x : 10^9
+
+h-min = 1
+h-max = max(a)
+
+
+3 1 2 4 6 2 5
+taken_vol       = sum(a)    tv:23
+total_water_vol = x         x:9
+
+h=1 => 0
+h=2 => min(sum(2-ai), 0)
+h=3 => min(sum(3-ai), 0)
+...
+h=k => min(sum(k-ai), 0)
+
+
+2 6 5 9 1 8
+total_fil = full_vol - taken_vol
+          = (max-height * n)  - sum(a)
+          = (9 * 6) - 31 = 23
+if x > total_fil:
+  remaining_vol = x - total_fil
+                = 1984 - 23 = 1961
+                n*k >= 1961
+        i.e., res = ceil(x/n) + max_height
+
