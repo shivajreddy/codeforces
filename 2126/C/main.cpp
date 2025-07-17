@@ -1,5 +1,5 @@
-// PROBLEM_NAME
-// PROBLEM_LINK
+// C. I Will Definitely Make It
+// https://codeforces.com/contest/2126/problem/C
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -27,9 +27,12 @@ int main() {
 
     int tc;
     cin >> tc;
-    while (tc--)
-        solve();
+    while (tc--) solve();
 }
 
 void solve() {
+    int n, k;
+    cin >> n >> k;
+    vi v(n);
+    loop(i, 0, n) cin >> v[i];
 }
