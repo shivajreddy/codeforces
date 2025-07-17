@@ -30,8 +30,7 @@ int main() {
 
     int tc;
     cin >> tc;
-    while (tc--)
-        solve();
+    while (tc--) solve();
 }
 
 void solve() {
@@ -41,16 +40,15 @@ void solve() {
     vector<vector<int>> mat(n, vector<int>(m)); // 2d matarix
     loop(i, 0, n) loop(j, 0, m) cin >> mat[i][j];
 
-    vector<int> has_color(n * m, 0);
+    vector<int> has_color(n * m, 0); // holds what at nums are encountered
     vector<int> has_bad(n * m, 0);
 
-    loop(i, 0, n) {
-        loop(j, 0, m) {
-            int num = mat[i][j];
-            has_color[num - 1] = 1;
-            if (i + 1 < n && num == mat[i + 1][j]) has_bad[num - 1] = 1;
-            if (j + 1 < m && num == mat[i][j + 1]) has_bad[num - 1] = 1;
-        }
+    loop(i, 0, n) loop(j, 0, m) {
+        int num = mat[i][j];
+        has_color[num - 1] = 1;
+        // check if right & down cells have same color, if so mark as bad
+        if (i + 1 < n && num == mat[i + 1][j]) has_bad[num - 1] = 1;
+        if (j + 1 < m && num == mat[i][j + 1]) has_bad[num - 1] = 1;
     }
     int sum_has_color = accumulate(has_color.begin(), has_color.end(), 0);
     int sum_has_bad = accumulate(has_bad.begin(), has_bad.end(), 0);
