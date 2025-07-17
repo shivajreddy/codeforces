@@ -20,15 +20,36 @@ void setupIO() {
 #endif
 }
 
-void solve();
+void test_case();
 
 int main() {
     setupIO();
 
     int tc;
     cin >> tc;
-    while (tc--) solve();
+    while (tc--) test_case();
 }
 
-void solve() {
+void test_case() {
+    int n;
+    cin >> n;
+
+    vector<vector<int>> all_arrays(n);
+
+    int curr_n = n;
+    loop(i, 0, n) {
+        int m;
+        cin >> m;
+        vi a(m);
+        loop(j, 0, m) cin >> a[j];
+        // loop(k, 0, m) cout << a[k] << " ";
+        // cout << endl;
+        sort(a.begin(), a.end()); // sort each array
+        all_arrays[i] = a;
+    }
+
+    loop(i, 0, n) {
+        loop(j, 0, all_arrays[i].size()) cout << all_arrays[i][j] << " ";
+        cout << endl;
+    }
 }

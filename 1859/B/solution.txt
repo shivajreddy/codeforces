@@ -1,0 +1,31 @@
+5 7 1001 1007
+6 8 11
+2 9
+tot=13
+
+
+5 7 1001 1007
+6 8 11
+^
+2 9
+^
+
+OBSERVATIOIN: since we must pick min num from each array.
+- the smallest number of all arrays will always be counted
+- to move the first smallest num from an array to some other array, the 
+  second number in this array should be strictly larger than all the min nums
+  other arrays
+
+
+2 6 5 7 1001 1007
+8 11
+9
+
+
+5 7 1001 1007
+6 8 11
+2 9
+
+total=19
+
+
