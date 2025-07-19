@@ -69,23 +69,11 @@ void solve() {
     // If n is odd or n < 4, no solution possible
     if (n % 2 == 1 || n < 4) {
         cout << "-1\n";
-        return;
+    } else {
+        ll mx = n / 4;
+        ll mn = (n % 6 == 0) ? n / 6 : n / 6 + 1;
+        cout << mn << " " << mx << "\n";
     }
-
-    // For maximum buses: use as many 2-axle buses (4 wheels) as possible
-    ll mx = n / 4;
-
-    // For minimum buses: use as many 3-axle buses (6 wheels) as possible
-    ll mn;
-    if (n % 6 == 0) {
-        // n is divisible by 6, use only 3-axle buses
-        mn = n / 6;
-    } else { // n % 6 == 4
-        // Remainder 4: use two 2-axle buses, rest 3-axle buses
-        mn = n / 6 + 1;
-    }
-
-    cout << mn << " " << mx << "\n";
 }
 
 void solve2() {
