@@ -61,7 +61,8 @@ Also don't forget the case n=2
 Time complexity: O(1)
  */
 
-// 1:49
+// 1:49 -> 2:59 , still dont understand this fucking problem.
+// NOTE: very useless problem to spend time on.
 void solve() {
     ll n;
     cin >> n;
