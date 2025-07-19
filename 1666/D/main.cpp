@@ -34,13 +34,10 @@ void solve() {
     string s, t;
     cin >> s >> t;
 
-    int n = s.size();
-    int m = t.size();
-
     vi freq_t(26, 0);
-    loop(i, 0, m) freq_t[t[i] - 'A']++;
+    for (char c : t) freq_t[c - 'A']++;
 
-    for (int i = n - 1; i >= 0; i--) {
+    for (int i = s.size() - 1; i >= 0; i--) {
         char c = s[i];
         if (freq_t[c - 'A'] > 0)
             freq_t[c - 'A']--;
@@ -49,7 +46,7 @@ void solve() {
     }
 
     string final_string = "";
-    loop(i, 0, n) if (s[i] != '.') final_string += s[i];
+    loop(i, 0, s.size()) if (s[i] != '.') final_string += s[i];
     final_string == t ? cout << "YES\n" : cout << "NO\n";
 }
 
