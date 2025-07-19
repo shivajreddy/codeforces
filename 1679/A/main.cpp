@@ -41,72 +41,91 @@ for max number of buses:
                 no 4 all 6
 
 */
+/*
+ * Let the number of buses with two axles is x
+ and the number of buses with three axles is y. Then the equality 4x+6y=n must
+be true. If n is odd, there is no answer, because the left part of the equality
+is always even. Now we can divide each part of the equality by two: 2x+3y=n2
+.
+Let's maximize the number of buses. Then we should make x
+ as large as possible. So, we will get 2+…+2+2=n2 if n2 is even, and 2+…+2+3=n2
+otherwise. In both cases the number of buses is ⌊n2⌋
+.
+Now let's minimize the number of buses. So, we should make y
+ as large is possible. We will get 3+…+3+3+3=n2 if n2 is divisible by 3,
+3+…+3+3+2=n2 if n≡2(mod3), and 3+…+3+2+2=n2 if n≡1(mod3). In all cases the
+number of buses is ⌈n3⌉
+.
+Also don't forget the case n=2
+ — each bus has at least four wheels, so in this case there is no answer.
+Time complexity: O(1)
+ */
 
 // 1:49
 void solve() {
     ll n;
     cin >> n;
 
+    // If n is odd or n < 4, no solution possible
+    if (n % 2 == 1 || n < 4) {
+        cout << "-1\n";
+        return;
+    }
+
+    // For maximum buses: use as many 2-axle buses (4 wheels) as possible
+    ll mx = n / 4;
+
+    // For minimum buses: use as many 3-axle buses (6 wheels) as possible
+    ll mn;
+    if (n % 6 == 0) {
+        // n is divisible by 6, use only 3-axle buses
+        mn = n / 6;
+    } else { // n % 6 == 4
+        // Remainder 4: use two 2-axle buses, rest 3-axle buses
+        mn = n / 6 + 1;
+    }
+
+    cout << mn << " " << mx << "\n";
+}
+
+void solve2() {
+    ll n;
+    cin >> n;
+
+    if (n % 2 == 1 || n < 4) {
+        cout << "-1\n";
+        return;
+    }
+
+    // /* BRUTE FORCE
     ll mn = -1, mx = -1;
 
     ll curr6, curr4;
-    // MAX
+    // Minmize the buses
     curr6 = n, curr4 = 0;
-    while (curr6 % 6 != 0 && curr4 % 4 != 0) {
-        curr6--;
-        curr4++;
+    // cout << "START: curr6:" << curr6 << " curr4:" << curr4 << endl;
+    // cout << "curr6%6=" << curr6 % 6 << " curr4%4=" << curr4 % 4 << endl;
+    while (curr6 >= 0 && curr4 >= 0 && (curr6 % 6 != 0 || curr4 % 4 != 0)) {
+        curr6 -= 1;
+        curr4 += 1;
+        // cout << " NOW:: curr6:" << curr6 << " curr4:" << curr4 << endl;
+    }
+    // cout << "FINISH: curr6:" << curr6 << " curr4:" << curr4 << endl;
+    if (curr6 % 6 == 0 && curr4 % 4 == 0) {
+        mn = curr6 / 6 + curr4 / 4;
+    }
+
+    // Maximise the buses
+    curr6 = 0, curr4 = n;
+    while (curr6 >= 0 && curr4 >= 0 && (curr6 % 6 != 0 || curr4 % 4 != 0)) {
+        curr6++;
+        curr4--;
     }
     if (curr6 % 6 == 0 && curr4 % 4 == 0) {
         mx = curr6 / 6 + curr4 / 4;
     }
 
-    // MIN
-    curr6 = 0, curr4 = n;
-    while (curr6 % 6 != 0 && curr4 % 4 != 0) {
-        curr6++;
-        curr4--;
-    }
-    if (curr6 % 6 == 0 && curr4 % 4 == 0) {
-        mn = curr6 / 6 + curr4 / 4;
-    }
-
-    /*
-    ll count6, count4, rem;
-
-
-    // Max
-    count6 = 0;
-    count4 = 0;
-    rem = 0;
-    if (n % 6 == 0) {
-        count6 = n / 6;
-    } else {
-        rem = n % 6;
-        count6 = (n - rem) / 6;
-    }
-    if (rem % 4 == 0) {
-        count4 = rem / 4;
-        mn = count6 + count4;
-    }
-    // 548 : 540 8
-    // mn:92 mx:137
-
-    // Min
-    count6 = 0;
-    count4 = 0;
-    rem = 0;
-    if (n % 4 == 0) {
-        count4 = n / 4;
-    } else {
-        rem = n % 4;
-        count4 = (n - rem) / 4;
-    }
-    if (rem % 6 == 0) {
-        count6 = rem / 6;
-        mx = count6 + count4;
-    }
-    cout << "mn:" << mn << " mx:" << mx << endl;
-    */
+    // cout << "mn:" << mn << " mx:" << mx << endl;
 
     // Couldnt form x6+y4=n
     if (mn == -1 && mx == -1) {
@@ -118,6 +137,7 @@ void solve() {
     } else {
         cout << mn << " " << mx << endl;
     }
+    // */
 }
 
 int main() {
