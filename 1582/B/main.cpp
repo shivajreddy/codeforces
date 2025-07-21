@@ -81,6 +81,7 @@ void solve() {
     }
 
     // result is 2^cnt0 * cnt1
+
     ll res = (1LL << cnt0) * cnt1;
     cout << res << endl;
 }
