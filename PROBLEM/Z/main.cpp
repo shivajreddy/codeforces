@@ -12,24 +12,17 @@ typedef vector<int> vi;
 #define PB push_back
 #define loop(i, a, b) for (int i = a; i < b; i++)
 
-void setupIO() {
+void solve() {
+}
+
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
 #endif
-}
-
-void solve();
-
-int main() {
-    setupIO();
 
     int tc;
     cin >> tc;
-    while (tc--)
-        solve();
-}
-
-void solve() {
+    while (tc--) solve();
 }
