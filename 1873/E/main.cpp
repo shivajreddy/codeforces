@@ -7,17 +7,56 @@ using namespace std;
 // shorter type names
 typedef long long ll;
 typedef vector<int> vi;
+typedef vector<ll> vll;
 
 // Macros
 #define PB push_back
 #define loop(i, a, b) for (int i = a; i < b; i++)
 
 void solve2() {
-    int n, x;
+    ll n, x;
     cin >> n >> x;
 
-    vi a(n);
+    vll a(n);
     loop(i, 0, n) cin >> a[i];
+
+    sort(a.begin(), a.end());
+
+    vll prefix = a;
+    loop(i, 1, n) prefix[i] += prefix[i - 1];
+
+    vll total_vol(n);
+    loop(i, 0, n) total_vol[i] = (i + 1) * a[i];
+
+    vll water(n);
+    loop(i, 0, n) water[i] = total_vol[i] - prefix[i];
+
+    int idx = 0;
+    for (; idx < n; idx++) {
+        // Find ht. where water overflows.
+        if (water[idx] >= x) break;
+    }
+
+    int needed_ht = a[idx - 1]; // ht as of now
+    int remaining_water = x - water[idx - 1];
+    int remaining_ht = remaining_water / idx; // idx is the ht as of now
+    int result = needed_ht + remaining_ht;
+    cout << result << endl;
+
+    /*
+    cout << "heights\n";
+    for (auto num : a) cout << num << " ";
+    cout << endl;
+    cout << "prefix\n";
+    for (auto num : prefix) cout << num << " ";
+    cout << endl;
+    cout << "total_val\n";
+    for (auto num : total_vol) cout << num << " ";
+    cout << endl;
+    cout << "water\n";
+    for (auto num : water) cout << num << " ";
+    cout << endl;
+    */
 }
 
 void solve() {
@@ -29,7 +68,7 @@ void solve() {
 
     ll lo = 0, hi = 2'000'000'007;
     while (lo < hi) {
-        ll mid = lo + (hi - lo + 1) / 2;
+        ll mid = lo + (hi - lo + 1) / 2; // target-height
         ll tot = 0;
         for (int i = 0; i < n; i++) {
             tot += max(mid - a[i], 0LL);
