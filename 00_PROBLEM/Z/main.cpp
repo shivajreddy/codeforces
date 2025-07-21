@@ -1,7 +1,7 @@
 // PROBLEM_NAME
 // PROBLEM_LINK
 
-// {
+// { Imports, TypeNames, Macros
 #include <bits/stdc++.h>
 using namespace std;
 

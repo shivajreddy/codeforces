@@ -1,7 +1,7 @@
 // A. Exciting Bets
 // https://codeforces.com/problemset/problem/1543/A
 
-// {
+// { Imports, TypeNames, Macros
 #include <bits/stdc++.h>
 using namespace std;
 
