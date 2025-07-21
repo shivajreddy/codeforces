@@ -30,33 +30,33 @@ int main() {
     while (tc--) solve();
 }
 void solve() {
-    string n;
-    cin >> n;
+    string s;
+    cin >> s;
 
     const vector<string> subseqs = { "00", "25", "50", "75" };
     const int INF = 100;
 
     auto getSolution = [&](const string& target) -> int {
-        int sptr = n.length() - 1;
+        int idx = s.size() - 1;
         int ans = 0;
 
         // Find rightmost occurrence of second digit
-        while (sptr >= 0 && n[sptr] != target[1]) {
-            sptr--;
+        while (idx >= 0 && s[idx] != target[1]) {
+            idx--;
             ans++;
         }
 
-        if (sptr < 0) return INF;
+        if (idx < 0) return INF;
 
-        sptr--;
+        idx--;
 
         // Find leftmost occurrence of first digit (to the left of second digit)
-        while (sptr >= 0 && n[sptr] != target[0]) {
-            sptr--;
+        while (idx >= 0 && s[idx] != target[0]) {
+            idx--;
             ans++;
         }
 
-        return sptr < 0 ? INF : ans;
+        return idx < 0 ? INF : ans;
     };
 
     int result = INF;
