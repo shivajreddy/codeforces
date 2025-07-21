@@ -22,14 +22,14 @@ void solve2() {
 
     sort(a.begin(), a.end());
 
-    vll prefix = a;
-    loop(i, 1, n) prefix[i] += prefix[i - 1];
+    vll coral_vol = a; // volume of the coral so far
+    loop(i, 1, n) coral_vol[i] += coral_vol[i - 1];
 
     vll total_vol(n);
     loop(i, 0, n) total_vol[i] = (i + 1) * a[i];
 
     vll water(n);
-    loop(i, 0, n) water[i] = total_vol[i] - prefix[i];
+    loop(i, 0, n) water[i] = total_vol[i] - coral_vol[i];
 
     int idx = 0;
     for (; idx < n; idx++) {
@@ -47,8 +47,8 @@ void solve2() {
     cout << "heights\n";
     for (auto num : a) cout << num << " ";
     cout << endl;
-    cout << "prefix\n";
-    for (auto num : prefix) cout << num << " ";
+    cout << "coral_vol\n";
+    for (auto num : coral_vol) cout << num << " ";
     cout << endl;
     cout << "total_val\n";
     for (auto num : total_vol) cout << num << " ";
