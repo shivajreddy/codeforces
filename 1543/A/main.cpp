@@ -14,7 +14,10 @@ typedef vector<int> vi;
 #define loop(i, a, b) for (int i = a; i < b; i++)
 // }
 
+// PURE MATH problem, dont waste time on this for now
 void solve() {
+    int a, b;
+    cin >> a >> b;
 }
 
 int main() {
