@@ -18,11 +18,13 @@ void solve() {
     int ROWS, COLS, i, j;
     cin >> ROWS >> COLS >> i >> j;
 
+    cout << "1 1 " << ROWS << " " << COLS << endl;
+    return;
     queue<pair<pair<int, int>, int>> q;
-    q.push({ { i, j }, 0 });
+    q.push({ { i - 1, j - 1 }, 0 });
 
     set<pair<int, int>> visited;
-    visited.insert({ i, j });
+    visited.insert({ i - 1, j - 1 });
 
     int mx1 = 0, mx2 = 0;
     pair<int, int> res1, res2;
@@ -33,9 +35,11 @@ void solve() {
         q.pop();
 
         int r = node.first.first, c = node.first.second, edges = node.second;
-        cout << "r:" << r << " c:" << c << " edges:" << edges << endl;
+        // cout << "r:" << r << " c:" << c << " edges:" << edges << endl;
 
         if (2 * edges > mx1) {
+            mx2 = mx1;
+            res2 = res1;
             mx1 = 2 * edges;
             res1 = { r, c };
         } else if (2 * edges > mx2) {
@@ -48,7 +52,7 @@ void solve() {
             int nr = r + dr, nc = c + dc;
 
             if (0 <= nr && nr < ROWS && 0 <= nc && nc < COLS &&
-                visited.count({ nr, nc }) != 0) {
+                visited.count({ nr, nc }) == 0) {
                 visited.insert({ nr, nc });
                 q.push({ { nr, nc }, edges + 1 });
             }

@@ -14,3 +14,6 @@ OBSERVATION:
   from that cell to (i,j), *2 for going back
   - value of cell(i,j) is 0
 - return the sum of 2 largest values
+- THE ABOVE LOGIC FAILS BECAUSE, SAY IN ABOVE GRID IF PLACE IN 
+  (4,4) AND (4,3) THEN (4,3) IS ALREADY COVERED IN (4,4)
+- 
