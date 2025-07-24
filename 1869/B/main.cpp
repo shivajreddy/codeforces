@@ -3,11 +3,16 @@
 
 // { Imports, TypeNames, Macros
 #include <bits/stdc++.h>
+#include <queue>
 using namespace std;
 
 // shorter type names
 typedef long long ll;
 typedef vector<int> vi;
+typedef pair<int, int> pii;
+// template <typename T> using pq = priority_queue<T>;
+// template <typename T>
+// using min_pq = priority_queue<T, vector<pii>, greater<pii>>;
 
 // Macros
 #define PB push_back
@@ -28,7 +33,28 @@ void solve() {
         return abs(bx - ax) + abs(by - ay);
     };
 
+    // Dijkstra's Shortest Path
     int start = a - 1, target = b - 1;
+
+    // min-heap where the smalelst pair.first comes to the top
+    priority_queue<pii, vector<pii>, greater<pii>> min_heap;
+    unordered_set<int> visited { start };
+
+    loop(i, 0, n) {
+        if (i == start) continue;
+        auto d = get_dist(start, i);
+        // cout << "d:" << d << " i:" << i << endl;
+        min_heap.push({ d, i });
+    }
+
+    // test
+    while (!min_heap.empty()) {
+        auto top = min_heap.top();
+        // cout << "picked: [" << top.first << "," << top.second << ",(";
+        // cout << mat[top.second][0] << "," << mat[top.second][1] << ")]\n";
+        // Relaxation: from this node
+        min_heap.pop();
+    }
 }
 
 int main() {
