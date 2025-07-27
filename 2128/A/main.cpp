@@ -27,7 +27,7 @@ void solve() {
     for (int num : a) {
         int count = -1;
         // if (num < c && 2 * num < c) {
-        if (num < c) {
+        if (num <= c) {
             double val = num / c;
             double logVal = log2(c / num);
             count = static_cast<int>(floor(logVal));
