@@ -3,6 +3,7 @@
 
 // { Imports, TypeNames, Macros
 #include <bits/stdc++.h>
+#include <climits>
 #include <queue>
 using namespace std;
 
@@ -18,8 +19,24 @@ typedef pair<int, int> pii;
 #define PB push_back
 #define loop(i, a, b) for (int i = a; i < b; i++)
 // }
-
 void solve() {
+    int n, k, s, t;
+    cin >> n >> k >> s >> t;
+
+    vector<ll> x(n + 1), y(n + 1);
+    loop(i, 1, n + 1) cin >> x[i] >> y[i];
+
+    ll ans = abs(x[s] - x[t]) + abs(y[s] - y[t]);
+    ll mins = 1e17, mint = 1e17;
+    loop(i, 1, k + 1) {
+        mins = min(mins, abs(x[s] - x[i]) + abs(y[s] - y[i]));
+        mint = min(mint, abs(x[t] - x[i]) + abs(y[t] - y[i]));
+    }
+    ans = min(ans, mins + mint);
+    cout << ans << endl;
+}
+
+void solve2() {
     int n, k, a, b;
     cin >> n >> k >> a >> b;
 
@@ -48,10 +65,17 @@ void solve() {
     }
 
     // test
+    int prev = INT_MAX;
     while (!min_heap.empty()) {
-        auto top = min_heap.top();
-        // cout << "picked: [" << top.first << "," << top.second << ",(";
-        // cout << mat[top.second][0] << "," << mat[top.second][1] << ")]\n";
+        while (!min_heap.empty() && min_heap.top().first <= prev) {
+            auto top = min_heap.top();
+            cout << "picked: [" << top.first << "," << top.second << ",(";
+            cout << mat[top.second][0] << "," << mat[top.second][1] << ")]\n";
+            min_heap.pop();
+            prev = top.first;
+        }
+        prev = INT_MAX;
+        cout << "---" << endl;
         // Relaxation: from this node
         min_heap.pop();
     }
