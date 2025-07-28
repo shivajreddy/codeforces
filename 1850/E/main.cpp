@@ -21,6 +21,14 @@ void solve() {
     vector<ll> a(n);
     loop(i, 0, n) cin >> a[i];
 
+    ll S = 0;
+    for (int num : a) S += pow(num, 2);
+
+    ll total_sum = 0;
+    for (int num : a) total_sum += num;
+
+    ll b = c - S;
+
     loop(i, 0, n) cout << a[i] << " ";
     cout << endl;
 }
