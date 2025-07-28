@@ -11,29 +11,45 @@ using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int, int> pii;
-// template <typename T> using pq = priority_queue<T>;
-// template <typename T>
-// using min_pq = priority_queue<T, vector<pii>, greater<pii>>;
 
 // Macros
 #define PB push_back
 #define loop(i, a, b) for (int i = a; i < b; i++)
 // }
+
 void solve() {
     int n, k, s, t;
     cin >> n >> k >> s >> t;
 
-    vector<ll> x(n + 1), y(n + 1);
+    vector<ll> x(n + 1), y(n + 1); // x&y coordinates (1-based)
     loop(i, 1, n + 1) cin >> x[i] >> y[i];
 
-    ll ans = abs(x[s] - x[t]) + abs(y[s] - y[t]);
-    ll mins = 1e17, mint = 1e17;
+    // Distance b/w the cities of given indexes(1-based)
+    auto get_dist = [&](int idx1, int idx2) -> ll {
+        return abs(x[idx1] - x[idx2]) + abs(y[idx1] - y[idx2]);
+    };
+
+    ll ans = get_dist(s, t);
+    ll min_s = 1e17, min_t = 1e17;
     loop(i, 1, k + 1) {
-        mins = min(mins, abs(x[s] - x[i]) + abs(y[s] - y[i]));
-        mint = min(mint, abs(x[t] - x[i]) + abs(y[t] - y[i]));
+        // smallest dist to connect to network from start
+        min_s = min(min_s, get_dist(s, i));
+        // smallest dist to connect to network from target
+        min_t = min(min_t, get_dist(t, i));
     }
-    ans = min(ans, mins + mint);
+    // is it better to directly traver from s->t or using network
+    ans = min(ans, min_s + min_t);
     cout << ans << endl;
+
+    /*
+    - shortest distance b/w two points is displacement
+    - if you would have to use any other point, the best case scenario is if
+    the point is on the line of travel, whose total distance is same as
+    displacement
+    - so in this case, the other case to check is, if the
+    (distance from start to network) + (distance from target to network)
+    is smaller than displacement.
+    */
 }
 
 void solve2() {
