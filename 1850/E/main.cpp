@@ -21,6 +21,33 @@ void solve() {
     vector<ll> a(n);
     loop(i, 0, n) cin >> a[i];
 
+    ll ans;
+    ll l = 1, r = 1e9;
+    while (l <= r) { // n*log(1e9)
+        ll mid = l + (r - l) / 2;
+        ll all_areas_sum = 0;
+        loop(i, 0, n) {
+            ll side = a[i] + 2 * mid;
+            all_areas_sum += side * side;
+            if (all_areas_sum > c) break;
+        }
+        if (all_areas_sum <= c) {
+            ans = mid;
+            l = mid + 1;
+        } else {
+            r = mid - 1;
+        }
+    }
+    cout << ans << endl;
+}
+
+void solve2() {
+    ll n, c;
+    cin >> n >> c;
+
+    vector<ll> a(n);
+    loop(i, 0, n) cin >> a[i];
+
     ll S = 0;
     for (int num : a) S += pow(num, 2);
 
