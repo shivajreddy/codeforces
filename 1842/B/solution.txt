@@ -1,0 +1,22 @@
+
+x=7
+1 2 3 4 5
+5 4 3 2 1
+1 3 5 7 9
+
+u=0
+u|1 = 
+
+RULES:
+- we always go from left to right in a book stack, so stop when hit 0 case
+- can start with any of the three stacks
+- all possible paths orderes: 123,132, 213, 231, 312, 321
+
+OBSERVATION:
+- bitwise::  
+    odd  | odd   = 
+    odd  | even  = 
+    even | even  = 
+    even | odd   = 
+
+
