@@ -22,8 +22,8 @@ void solve() {
     loop(i, 0, n) cin >> a[i];
 
     ll ans;
-    ll l = 1, r = 1e9;
-    while (l <= r) { // n*log(1e9)
+    ll l = 1, r = 1e9; // w is in range[1, 10^9]
+    while (l <= r) {   // n*log(1e9)
         ll mid = l + (r - l) / 2;
         ll all_areas_sum = 0;
         loop(i, 0, n) {

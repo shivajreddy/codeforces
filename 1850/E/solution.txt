@@ -20,6 +20,18 @@ b^2 + 2b.total_sum = (c - S)  / n
 365
 3 4
 
+OBSERVATION:
+- min-w = 1
+- say sides of squares are s1, s2, s3 ... sn
+  - new length of square is (s1+2w), (s2+2w), (s3+2w) ... (sn+2w)
+  - the sum of squares is (s1+2w)^2, (s2+2w)^2, (s3+2w)^2 ... (sn+2w)^2
+  - we are given that (s1+2w)^2, (s2+2w)^2, (s3+2w)^2 ... (sn+2w)^2 = c
+  - and range of c is [1, 10^18]
+  - for finding max w, assume we just have 1 square, and since w will be squared
+    after squaring it should be equal to 10^18, so max w can be is 10^9
+  - so w is in range[1, 10^9]
+
+
 469077255466389
 10000 2023
 
