@@ -18,12 +18,38 @@ void solve() {
     int n, x;
     cin >> n >> x;
 
+    vi pre[3];
+    loop(i, 0, 3) {
+        int s = 0;
+        pre[i].push_back(s);
+        loop(j, 0, n) {
+            int a;
+            cin >> a;
+            if ((s | a) != s) {
+                s |= a;
+                pre[i].push_back(s);
+            }
+        }
+    }
+    bool ans = 0;
+    for (int A : pre[0]) {
+        for (int B : pre[1]) {
+            for (int C : pre[2]) {
+                if ((A | B | C) == x) ans = true;
+            }
+        }
+    }
+
+    cout << (ans ? "YES\n" : "NO\n");
+
+    /*
     vi a(n);
     loop(i, 0, n) cin >> a[i];
     vi b(n);
     loop(i, 0, n) cin >> b[i];
     vi c(n);
     loop(i, 0, n) cin >> c[i];
+    */
 }
 
 int main() {
