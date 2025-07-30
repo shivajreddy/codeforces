@@ -13,10 +13,13 @@ RULES:
 - all possible paths orderes: 123,132, 213, 231, 312, 321
 
 OBSERVATION:
-- bitwise::  
-    odd  | odd   = 
-    odd  | even  = 
-    even | even  = 
-    even | odd   = 
+- bitwise OR properties:
+    odd  | odd   = odd
+    odd  | even  = odd
+    even | even  = even
+    even | odd   = odd
+     0   | num   = num
+    num1 | num2  = num2 | num1
+- so if x is even.
 
 
