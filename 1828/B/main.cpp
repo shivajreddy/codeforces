@@ -2,7 +2,6 @@
 // https://codeforces.com/problemset/problem/1828/B
 
 #include <bits/stdc++.h>
-#include <climits>
 using namespace std;
 
 void setupIO() {
@@ -33,8 +32,7 @@ void solve() {
 
     // find the greatest common divisor in vec-d
     int res = d[0];
-    for (int curr_d : d)
-        res = gcd(res, curr_d);
+    for (int curr_d : d) res = gcd(res, curr_d);
     cout << res << "\n";
 }
 
@@ -43,6 +41,5 @@ int main() {
 
     int tc;
     cin >> tc;
-    while (tc--)
-        solve();
+    while (tc--) solve();
 }
