@@ -41,15 +41,6 @@ void solve() {
     }
 
     cout << (ans ? "YES\n" : "NO\n");
-
-    /*
-    vi a(n);
-    loop(i, 0, n) cin >> a[i];
-    vi b(n);
-    loop(i, 0, n) cin >> b[i];
-    vi c(n);
-    loop(i, 0, n) cin >> c[i];
-    */
 }
 
 int main() {
