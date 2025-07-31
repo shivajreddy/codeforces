@@ -28,10 +28,19 @@ void solve() {
     loop(i, 1, n) prefix[i] = prefix[i - 1] + a[i];
 
     ll res = -1;
+
     loop(i, 0, k + 1) {
-        int left = 2 * i;
-        int right = n - 1 - (k - i);
-        ll sum = prefix[right] - (left == 0 ? 0 : prefix[left - 1]);
+
+        int no_of_left_operations = i;
+        int no_of_right_operations = k - i;
+
+        // left idx will increase by 2, if chosen left operation
+        int left_idx = 2 * no_of_left_operations;
+
+        // right idx will reduce by 1, if chosen right operation
+        int right_idx = n - 1 - no_of_right_operations;
+
+        ll sum = prefix[right_idx] - (left_idx == 0 ? 0 : prefix[left_idx - 1]);
         res = max(res, sum);
     }
     cout << res << endl;
