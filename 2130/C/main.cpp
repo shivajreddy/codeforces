@@ -8,6 +8,7 @@ using namespace std;
 // shorter type names
 typedef long long ll;
 typedef vector<int> vi;
+typedef pair<int, int> pii;
 
 // Macros
 #define PB push_back
@@ -15,6 +16,48 @@ typedef vector<int> vi;
 // }
 
 void solve() {
+    int n;
+    cin >> n;
+
+    // vector<vi> edges(n, vector<int>(3));
+    vector<pii> edges(n);
+    loop(i, 0, n) {
+        cin >> edges[i].first >> edges[i].second;
+    }
+
+    if (n == 1) {
+        cout << "1\n1\n";
+        return;
+    }
+    if (n == 2) {
+        cout << "2\n1 2\n";
+        return;
+    }
+
+    vi space(2 * n + 1);
+    vi nodes;
+
+    loop(i, 0, n) {
+        int a = edges[i].first;
+        int b = edges[i].second;
+
+        bool did = false;
+        loop(j, a, b) {
+            if (space[j] == 0) {
+                space[j] = 1;
+                did = true;
+            }
+        }
+
+        if (did) nodes.push_back(i + 1);
+    }
+
+    cout << nodes.size() << endl;
+    for (int c : nodes) cout << c << " ";
+    cout << endl;
+}
+
+void solve2() {
     int n;
     cin >> n;
 
