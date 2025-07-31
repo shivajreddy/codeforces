@@ -1,5 +1,5 @@
-// PROBLEM_NAME
-// PROBLEM_LINK
+// A. Submission is All You Need
+// https://codeforces.com/contest/2130/problem/A
 
 // { Imports, TypeNames, Macros
 #include <bits/stdc++.h>
@@ -15,6 +15,21 @@ typedef vector<int> vi;
 // }
 
 void solve() {
+    int n;
+    cin >> n;
+
+    vi a(n);
+    ll total_sum = 0;
+    loop(i, 0, n) {
+        cin >> a[i];
+        total_sum += a[i];
+    }
+
+    int count_0 = 0;
+    for (int num : a)
+        if (num == 0) count_0 += 1;
+
+    cout << (total_sum + count_0) << endl;
 }
 
 int main() {
