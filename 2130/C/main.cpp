@@ -19,11 +19,8 @@ void solve() {
     int n;
     cin >> n;
 
-    // vector<vi> edges(n, vector<int>(3));
     vector<pii> edges(n);
-    loop(i, 0, n) {
-        cin >> edges[i].first >> edges[i].second;
-    }
+    loop(i, 0, n) cin >> edges[i].first >> edges[i].second;
 
     if (n == 1) {
         cout << "1\n1\n";
@@ -34,12 +31,11 @@ void solve() {
         return;
     }
 
-    vi space(2 * n + 1);
+    vi space(2 * n + 1); // 2n for n pairs. +1 for 1-indexing
     vi nodes;
 
     loop(i, 0, n) {
-        int a = edges[i].first;
-        int b = edges[i].second;
+        int a = edges[i].first, b = edges[i].second;
 
         bool did = false;
         loop(j, a, b) {
@@ -53,36 +49,7 @@ void solve() {
     }
 
     cout << nodes.size() << endl;
-    for (int c : nodes) cout << c << " ";
-    cout << endl;
-}
-
-void solve2() {
-    int n;
-    cin >> n;
-
-    vector<vi> edges(n, vector<int>(3));
-    loop(i, 0, n) {
-        cin >> edges[i][0] >> edges[i][1];
-        edges[i][2] = i; // original index
-    }
-
-    // maximize f(s), minimize g(s)
-    // for triangle of points a,b,c where a-c is straight,
-    // then a-b + b-c >= a-c, also eliminating a-c will reduce g(s)
-    // line sweep maybe
-    sort(edges.begin(), edges.end());
-    vi idx_but_sorted = { 0 };
-
-    for (int i = 1; i < edges.size(); i++) {
-        int prev_end = edges[idx_but_sorted.back()][1];
-        if (prev_end <= edges[i][0]) {
-            idx_but_sorted.push_back(i);
-        }
-    }
-
-    cout << idx_but_sorted.size() << endl;
-    for (int idx : idx_but_sorted) cout << edges[idx][2] + 1 << " ";
+    for (int node : nodes) cout << node << " ";
     cout << endl;
 }
 
