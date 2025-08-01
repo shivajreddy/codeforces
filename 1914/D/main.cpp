@@ -1,5 +1,5 @@
-// PROBLEM_NAME
-// PROBLEM_LINK
+// D. Three Activities
+// https://codeforces.com/problemset/problem/1914/D
 
 // { Imports, TypeNames, Macros
 #include <bits/stdc++.h>
