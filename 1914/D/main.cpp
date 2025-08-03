@@ -9,10 +9,12 @@ using namespace std;
 // shorter type names
 typedef long long ll;
 typedef vector<int> vi;
+typedef pair<int, int> pii;
 
 // Macros
 #define PB push_back
 #define loop(i, a, b) for (int i = a; i < b; i++)
+#define vec vector
 // }
 
 vi find_max(vi& arr) {
@@ -52,6 +54,32 @@ void solve() {
     cout << res << endl;
 }
 
+function<void(const vec<pii>&)> printpii = [](const vec<pii>& vp) {
+    for (auto p : vp) cout << "{" << p.first << "," << p.second << "} ";
+    cout << endl;
+};
+
+void helper() {
+}
+
+void solve_practise() {
+    int n;
+    cin >> n;
+
+    vi a(n);
+    loop(i, 0, n) cin >> a[i];
+    vi b(n);
+    loop(i, 0, n) cin >> b[i];
+    vi c(n);
+    loop(i, 0, n) cin >> c[i];
+
+    vec<pii> pa(n);
+    loop(i, 0, n) pa[i] = { a[i], i };
+    printpii(pa);
+    sort(pa.begin(), pa.end(), greater<pii>());
+    printpii(pa);
+}
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -61,5 +89,6 @@ int main() {
 
     int tc;
     cin >> tc;
-    while (tc--) solve();
+    // while (tc--) solve();
+    while (tc--) solve_practise();
 }
