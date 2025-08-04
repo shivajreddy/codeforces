@@ -19,7 +19,6 @@ void solve() {
     loop(i, 0, n) cin >> a[i];
 
     // EDITORIAL INSIGHT: Try k = 2^1, 2^2, ..., 2^57
-    //
 
     // Mathematical proof:
     // - f(k) = number of distinct values after mod k operation
