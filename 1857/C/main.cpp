@@ -15,10 +15,18 @@ typedef vector<int> vi;
 void solve() {
     int n;
     cin >> n;
-
     int size = (n * (n - 1)) / 2;
+
+    unordered_map<int, int> hm;
     int a[size];
-    loop(i, 0, size) cin >> a[i];
+    loop(i, 0, size) {
+        cin >> a[i];
+        hm[a[i]]++;
+    }
+
+    for (auto [k, v] : hm) cout << k << ":" << v << " ";
+    // loop(i, 0, size) cout << a[i] << " ";
+    cout << endl;
 }
 
 int main() {
