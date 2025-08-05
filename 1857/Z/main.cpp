@@ -1,6 +1,7 @@
 // PROBLEM_NAME
 // PROBLEM_LINK
 
+// { Imports, TypeNames, Macros
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -11,6 +12,7 @@ typedef vector<int> vi;
 // Macros
 #define PB push_back
 #define loop(i, a, b) for (int i = a; i < b; i++)
+// }
 
 void solve() {
 }

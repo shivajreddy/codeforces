@@ -1,5 +1,5 @@
-// PROBLEM_NAME
-// PROBLEM_LINK
+// C. Assembly via Minimums
+// https://codeforces.com/problemset/problem/1857/C
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,6 +13,12 @@ typedef vector<int> vi;
 #define loop(i, a, b) for (int i = a; i < b; i++)
 
 void solve() {
+    int n;
+    cin >> n;
+
+    int size = (n * (n - 1)) / 2;
+    int a[size];
+    loop(i, 0, size) cin >> a[i];
 }
 
 int main() {
