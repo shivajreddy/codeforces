@@ -1,5 +1,5 @@
-// C. Trip Shopping
-// https://codeforces.com/contest/2127/problem/C
+// D. Root was Built by Love, Broken by Destiny
+// https://codeforces.com/contest/2127/problem/D
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,13 +13,14 @@ typedef vector<int> vi;
 #define loop(i, a, b) for (int i = a; i < b; i++)
 
 void solve() {
-    int n, k;
-    cin >> n >> k;
+    int n, m;
+    cin >> n >> m;
 
-    vi a(n);
-    loop(i, 0, n) cin >> a[i];
-    vi b(n);
-    loop(i, 0, n) cin >> b[i];
+    if (n % 2 == 0) {
+        cout << n - 1 << endl;
+    } else {
+        cout << (n + 1) / 2 + (n / 2) - 1 << endl;
+    }
 }
 
 int main() {

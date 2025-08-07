@@ -1,13 +1,37 @@
 
-1
+
 ..#
+x
 
-2
+
 ....
+ x
 
-3
+
 ##..#
+  x
 
-4
+
 #...#.
+  x   
+
+
+    #   #   #   .   .   #   #
+    .   .   .   x   $   .   .
+
+
+
+dist_left   dist_right  <- dist from hamid to exit
+wall_left   wall_right  <- count of walls on each side
+
+OBSERVATION:
+if wall_left or wall_right is 0, then return => 1 day
+
+hamid will choose the side with smallest dist
+=> small + 1
+
+
+
+# . . . . . . . . . . #
+      x                    
 
