@@ -14,11 +14,42 @@ typedef vector<int> vi;
 
 void solve() {
     int n, x;
-    cin >> n >> x;
-    x--; // 0 index
-
     string s;
-    cin >> s;
+    cin >> n >> x >> s;
+    if (x == 1 || x == n) {
+        cout << "1\n";
+        return;
+    }
+    x--;
+    int inf = 1e9;
+    int lf = -inf, rg = inf;
+
+    for (int i = x - 1; i >= 0; i--)
+        if (s[i] == '#') {
+            lf = i;
+            break;
+        }
+
+    for (int i = x + 1; i < n; i++)
+        if (s[i] == '#') {
+            rg = i;
+            break;
+        }
+
+    if (lf == -inf && rg == inf) {
+        cout << "1\n";
+    } else {
+        int L = min(x + 1, n - rg + 1);
+        int R = min(lf + 2, n - x);
+        cout << max(L, R) << endl;
+    }
+}
+
+void solve2() {
+    int n, x;
+    string s;
+    cin >> n >> x >> s;
+    x--; // 0 index
 
     int left_dist = x, right_dist = n - 1 - x;
     int left_wall_count = 0, right_wall_count = 0;
@@ -57,7 +88,9 @@ void solve() {
     // cout << "left_wall_idx: " << left_wall_idx << endl;
     // cout << "right_wall_idx: " << right_wall_idx << endl;
     int left_solid_wall = left_wall_idx + 1;       // days break out left
-    int right_solid_wall = n - right_wall_idx + 1; // days break out right
+    int right_solid_wall = n - right_wall_idx + 2; // days break out right
+    cout << min(left_solid_wall, right_solid_wall) << endl;
+    return;
 
     // int smartest_dist = max(left_solid_wall, right_solid_wall);
     // cout << smartest_dist << endl;
