@@ -17,8 +17,6 @@ void solve() {
     cin >> n;
     vector<vi> mat(n, vi(2));
     loop(i, 0, n) cin >> mat[i][0] >> mat[i][1];
-
-    loop(i, 0, n) cout << mat[i][0] << " " << mat[i][1] << endl;
 }
 
 int main() {
